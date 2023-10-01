@@ -1,0 +1,50 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HOME</title>
+        <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet" />
+    
+
+        <style>
+              .cont{
+                margin: 20px;
+              }
+
+        </style>
+    </head>
+    <body>
+
+
+        {% include 'admin_nav.html' %}
+           <div class="content">
+            {% block content %}{% endblock %}
+           </div>
+
+
+
+        <div class="cont">
+          <form method="POST">
+            <div class="form-group">
+              <label for="productName">Product Name</label>
+              <input type="text" class="form-control" id="productName" name="pname" placeholder="Enter Prooduct Name">
+            </div>
+
+            <div class= "form_submit">
+                <input type="submit" class="btn btn-primary" name ="addproduct" value="Add">
+            </div>
+
+          </form>
+        </div>
+
+
+        {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <div class="flash">{{ messages }}</div>
+         {% endif %}
+        {% endwith %}
+
+        {% include 'footer.html' %}
+
+    </body>
+</html>

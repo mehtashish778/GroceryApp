@@ -1,0 +1,93 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HOME</title>
+        <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet" />
+        <script>
+
+              .scrollable-container {
+                height: 100%;
+                max-width: 90%%;
+                overflow-x: scroll;
+                white-space: nowrap;
+                scrollbar-width: thin;
+                scrollbar-color: #888 #f4f4f4;
+              }
+
+        </script>
+    </head>
+    <body>
+
+
+        <div class="sticky-top">
+
+          {% include 'nav.html' %}
+           <div class="content">
+            {% block content %}{% endblock %}
+           </div>
+        </div>
+
+
+            {% if plist|length != 0 %}
+  
+                {% for i in plist %}
+
+                    <div class="card " style="margin: 1% 2%;">
+
+                        <div class="row">
+
+                            <div class="col-sm">
+
+                                <img src={{i.image}} alt="...">
+                            </div>
+
+                            <div class="col-sm " Style>
+                                <div class="card-body ">
+                                    <h4 class="card-title">{{i.name}}</h4>
+                                    <p class="card-text">Category: {{i.category}}</p>
+
+                                    <h5 class="card-text">Price: Rs {{i.price}}</h5>
+
+                                    {% if i.stock < 1 %}
+                                    
+                                       <p style="color: red;">Out of Stock</p>
+
+              
+                                    {% else %}
+                                       <a href="{{i.id }}" class="btn btn-outline-success outer-horizontal-margin rounded-pill">Add To Cart</a>
+
+
+                                    {% endif %}
+
+                                    
+                                    
+                                    <h5 class="card-title">Description</h4>
+
+                                    <p class="card-text">{{i.description}}</p>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            {% else %}
+
+                <h1 style="text-align:center;">No Product Found</h1>
+            
+            
+            {% endif %}
+     
+            
+        <footer style="text-align:center;">
+            <small>
+                <small style="color: green;">Made by Ashish Mehta (21f1006271)</small>
+            </small>
+        </footer>
+        <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.min.js') }}"></script>
+    </body>
+</html>

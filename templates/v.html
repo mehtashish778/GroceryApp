@@ -1,0 +1,26 @@
+<nav class="navbar navbar-light bg-light justify-content-between">
+    <a class="navbar-brand">HOME</a>
+
+
+    <li class="nav-item">
+        <a class="nav-link" href="#">Cart</a>
+    </li>
+
+    <form class="form-inline">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Search</span>
+          </div>
+        </div>
+    </form>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Logout</a>
+    </li>
+</nav>
+<form method="post">
+  <div class="center">
+      <input type="submit" class="btn btn-primary" style="width: 100px;" value="Delete" name="delete_c{{i.name}}" />
+      <input type="submit" class="btn btn-primary" href="#" style="width: 100px;" value="Edit" name="edit_c{{i.name}}" />
+  </div>
+</form>

@@ -1,0 +1,34 @@
+<nav class="navbar justify-content-between">
+
+    <a href="{{ url_for('home') }}" class="btn btn-outline-success outer-horizontal-margin rounded-pill">Home</a>
+
+    <a href="{{ url_for('cart') }}" class="btn btn-outline-success outer-horizontal-margin rounded-pill">Cart</a>
+
+    
+    <form class="form-inline" action ="{{ url_for('search') }}" method="post">
+      <div class="input-group">
+        <input class="form-control mr-sm-2" placeholder="Search" aria-label="Search" name="search_query">
+
+        <select class="form-control" id="search_by" name="search_by">
+
+          <option>By_Name</option>
+          <option>By_ProductID</option>
+          <option>By_Category</option>
+          <option>By_Description</option>
+
+        </select>
+
+        <div class="input-group-append">
+          <button class="btn btn-outline-success" type="submit" id="search_button" name = "search_button">Search</button>
+        </div>
+
+
+
+      </div>
+      
+
+
+
+    </form>
+    <a href="{{link }}" class="btn btn-outline-success outer-horizontal-margin rounded-pill">{{id}}</a>
+  </nav>

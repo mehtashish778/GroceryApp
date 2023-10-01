@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HOME</title>
+        <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet" />
+        <script>
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+                box-sizing: border-box;}
+            .scroll-box {
+                overflow-y: scroll;
+                margin-top: 20px;
+                padding: 10px;
+                background-color: white;
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px 2px #777;
+              }
+        </script>
+    </head>
+    <body>
+
+
+        {% include 'nav.html' %}
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+
+
+        <div class="container">
+            <div class="scroll-box">
+
+
+
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Product Id</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">increase quantity button</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">reduce quantity button</th>
+                        <th scope="col">Cost</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for i in plist %}
+
+                      <tr>
+                        <td scope="col">{{i[2]}}</td>
+                        <td scope="col">{{i[4]}}</td>
+                        <td scope="col">{{i[5]}}</td>
+                        <td scope="col">
+
+
+
+                          <form class="form-inline" action ="{{ url_for('update_cart',cart_id= i[0]) }}" method="post">
+                            <button class="btn btn-outline-success" type="submit" id="increase" name = "increase">+</button>
+                          </form>
+
+
+
+                        </td>
+                        <td scope="col">{{i[3]}}</td>
+                        <td scope="col">
+
+
+                          <form class="form-inline" action ="{{ url_for('update_cart',cart_id= i[0]) }}" method="post">
+                            <button class="btn btn-outline-success" type="submit" id="decrease" name = "decrease">-</button>
+                          </form>
+
+
+
+
+                        </td>
+                        <td scope="col">{{i[3]*i[5]}}</td>
+                      </tr>
+
+
+
+                    {% endfor %}
+
+                      <tr>
+                        <td scope="col">Total</td>
+                        <td scope="col"></td>
+                        <td scope="col"></td>
+                        <td scope="col"></td>
+                        <td scope="col"></td>
+                        <td scope="col"></td>
+
+                        <td scope="col">Rs. {{total_amt}}</td>
+                      <tr>
+                    </tbody>
+                  </table>
+
+                    
+                   
+     
+                
+            </div>
+        
+        </div>
+
+        <form method="post">
+
+          <button type="submit" id="place_order" name = "place_order">Place Order</button>
+        
+        </form>
+        
+
+
+
+        <footer style="text-align:center;">
+            <small>
+                Made by Ashish Mehta(21f1006271)
+            </small>
+        </footer>
+        <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.min.js') }}"></script>
+    </body>
+</html>

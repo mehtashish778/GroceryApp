@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Store</title>
+
+
+
+    <link href="{{ url_for('static', filename='bootstrap/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet">
+
+
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="text-center">You are Logged Out</h1>
+                        <h3 class="text-center">Visit us Soon</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center">Click below to go to the home page:</p>
+                        <div class="d-grid">
+                            <a href="{{ url_for('home') }}" class="btn btn-success btn-block">Go to Home Page</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>

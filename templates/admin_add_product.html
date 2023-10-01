@@ -1,0 +1,86 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HOME</title>
+        <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet" />
+    
+
+        <style>
+              .cont{
+                margin: 20px;
+              }
+
+        </style>
+    </head>
+    <body>
+
+
+      <div class="sticky-top">
+
+        {% include 'admin_nav.html' %}
+         <div class="content">
+          {% block content %}{% endblock %}
+         </div>
+      </div>
+
+
+
+
+
+
+        <div class="cont">
+          <form method="POST">
+            <div class="form-group">
+              <label for="productName">Product Name</label>
+              <input type="text" class="form-control" id="productName" name="pname" placeholder="Enter Prooduct Name">
+            </div>
+            <div class="form-group">
+                <label for="imagelink">Image</label>
+                <input type="url" class="form-control" id="imagelink" name="pimagelink" placeholder="Enter Prooduct Image Link">
+              </div>
+
+            <div class="form-group col-md-2">
+                <label for="price">Price</label>
+                <input type="text" class="form-control" id="price" name="pprice">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="stock">Stock</label>
+                <input type="number" class="form-control" id="stock"  name="pstock">
+            </div>
+
+            <div class="form-group">
+                <label for="ctg">Select Category</label>
+                <select class="form-control" id="ctg" name="pcategory">
+                    {%for i in category_list %}
+                       <option>{{i.name}}</option>
+                    {% endfor %}
+                </select>
+              </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+
+
+
+                <input type="text" class="form-control" id="description" name="pdescription">
+
+            </div>
+            <div class= "form_submit">
+                <input type="submit" class="btn btn-primary" name ="addproduct" value="Add">
+            </div>
+
+          </form>
+        </div>
+
+
+             
+
+        <footer style="text-align:center;">
+            <small>
+                Made by Ashish Mehta(21f1006271)
+            </small>
+        </footer>
+        <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.min.js') }}"></script>
+    </body>
+</html>

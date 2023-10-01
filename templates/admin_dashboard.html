@@ -1,0 +1,115 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HOME</title>
+        <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet" />
+    
+
+        <style>
+            .card {
+                width: 200px;
+                height: 300px;
+                max-width: 100%;
+
+              }
+            .card-text {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                max-height: 150px; 
+                overflow-y: auto;
+            }
+              .scrollable-container {
+                height: 700px;
+                overflow-x: scroll;
+                white-space: nowrap;
+                scrollbar-width: thin;
+                scrollbar-color: #888 #f4f4f4;
+              }
+            .center {
+                margin: 0;
+                position: absolute;
+                left: 50%;
+                -ms-transform: translateX(-50%);
+                transform: translateX(-50%);}
+        </style>
+    </head>
+    <body>
+
+
+        {% include 'admin_nav.html' %}
+           <div class="content">
+            {% block content %}{% endblock %}
+           </div>
+
+        <div>
+            <a class="btn btn-primary btn-lg" href={{url_for('addProduct')}} role="button">Add Product</a>
+            <a class="btn btn-info btn-lg " href={{url_for('addCategory')}} role="button">Create Category</a>
+        </div>
+
+    
+        <div class="container mt-4" >
+            <h2>Product</h2>
+            <div class="scrollable-container">
+                {%  for i in product_list %}
+                   <div class="d-inline-block m-2">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ i.image }}" class="card-img-top" alt="..." >
+                        <div class = "container">
+                            <div class="card-body">
+                                
+                                <p class="card-title card-title-dashboard">{{i.name}}</p>
+                            
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Product Id: {{i.id}}</li>
+                            <li class="list-group-item">Price: {{i.price}}</li>
+                            <li class="list-group-item">Stock:  {{i.stock}}</li>
+                            <li class="list-group-item">Category: {{i.category}}</li>
+
+                            
+                        </ul>
+                        <div class="card-body">
+                            <a href="dashboard/del/product/{{i.id}}" class="btn btn-primary" style="width: 100px;">Delete</a>
+                            <a href="dashboard/edit/product/{{i.id}}" class="btn btn-primary" style="width: 100px;">Edit</a>
+                            
+                        </div>
+                          
+                    </div>
+                </div>
+              {% endfor %}
+            </div>
+        </div>
+
+        <div class="container mt-4">
+            <h2>Category</h2>
+            <div class="scrollable-container" style="height:190px;">
+                {%for i in category_list%}
+                
+                   <div class="d-inline-block m-2">
+                    <div class="card" style="width: 18rem; height:150px;" >
+                        <div class="card-body">
+                            <p class="card-title">Category Name: {{i.name}}</p>
+                        </div>
+
+                            <div class="card-body">
+                                <a href="dashboard/del/category/{{i.name}}" class="btn btn-primary" style="width: 100px;">Delete</a>
+                                <a href="dashboard/edit/category/{{i.name}}" class="btn btn-primary" style="width: 100px;">Edit</a>
+                            </div>
+                    </div>
+                   </div>
+              {% endfor %}
+            </div>
+        </div>
+
+             
+
+        <footer style="text-align:center;">
+            <small>
+                Made by Ashish Mehta(21f1006271)
+            </small>
+        </footer>
+        <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.min.js') }}"></script>
+    </body>
+</html>
